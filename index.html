@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Meter Data Upload</title>
+    <link rel="stylesheet" href="styles1.css"> <!-- Optional: Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Meter Data Upload Application</h1>
+        <h2>Select a Page to Navigate</h2>
+        <select id="pageSelector">
+            <option value="">-- Select a Page --</option>
+            <option value="dagaSamindex.html">Daga Sam</option>
+            <option value="damjeeindex.html">Damjee</option>
+            <option value="dcclindex.html">DCCL</option>
+            <option value="docindex.html">Dochula</option>
+            <option value="jamindex.html">Jam</option>
+            <option value="tabaphpaindex.html">Taba & PHPA</option>
+        </select>
+        <button id="navigateBtn">Go</button>
+    </div>
+
+    <script>
+        // Load the selected page from local storage
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedPage = localStorage.getItem('selectedPage');
+            if (savedPage) {
+                document.getElementById('pageSelector').value = savedPage;
+            }
+        });
+
+        document.getElementById('navigateBtn').addEventListener('click', function() {
+            const selectedPage = document.getElementById('pageSelector').value;
+            if (selectedPage) {
+                localStorage.setItem('selectedPage', selectedPage); // Save the selected page
+                window.location.href = selectedPage; // Navigate to the selected page
+            } else {
+                alert('Please select a page to navigate.');
+            }
+        });
+    </script>
+</body>
+</html>
